@@ -11,8 +11,10 @@ import Liked from './components/Liked';
 import Profile from './components/Profile';
 import colors from './assets/colors/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 Entypo.loadFont();
+MaterialCommunityIcons.loadFont();
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,16 +26,52 @@ const TabNavigator = () => {
         tabBarStyle: styles.tabBar,
         tabBarActiveTintColor: colors.orange,
         tabBarInactiveTintColor: colors.gray,
+        tabBarShowLabel: false,
+        headerShown: false,
+        // tabBarLabelStyle: {fontSize: 13},
       }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => <Entypo name="home" size={32} />,
+          tabBarIcon: ({color}) => (
+            <Entypo
+              name="home"
+              size={32}
+              color={color}
+              // style={{paddingTop: 5}}
+            />
+          ),
         }}
       />
-      <Tab.Screen name="Liked" component={Liked} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Liked"
+        component={Liked}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Entypo
+              name="heart"
+              size={32}
+              color={color}
+              // style={{paddingTop: 5}}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({color}) => (
+            <MaterialCommunityIcons
+              name="account"
+              size={32}
+              color={color}
+              // style={{paddingTop: 5}}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
@@ -42,7 +80,16 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        <Stack.Screen
+          name="TabNavigator"
+          component={TabNavigator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{headerShown: false, headerTitle: 'kaldır'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -53,6 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    height: 55,
   },
 });
 

@@ -25,6 +25,19 @@ const discoverData = [
     rating: 4.5,
     duration: 3,
   },
+  {
+    id: 'discover-3',
+    title: 'Keske Yazilim Ogrenseydim',
+    location: 'Turkey',
+    image: require('../images/kopek.png'),
+    imageBig: require('../images/kopek-big.png'),
+    description:
+      'senin gibi kopek gibi calisarak 1500 almak mi benim gibi yatip 1300 almak mi',
+    liked: true,
+    price: 350,
+    rating: 4.5,
+    duration: 3,
+  },
 ];
 
 export default discoverData;
