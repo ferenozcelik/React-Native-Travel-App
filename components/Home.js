@@ -87,7 +87,9 @@ const Home = ({navigation}) => {
               color={colors.black}
               style={styles.menuIcon}
             />
-            <Image source={blueking} style={styles.profileImage} />
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+              <Image source={blueking} style={styles.profileImage} />
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
 
